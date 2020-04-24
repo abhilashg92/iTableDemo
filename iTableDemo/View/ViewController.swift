@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     var tableView:UITableView!
     var refreshControl = UIRefreshControl()
     
+    private var webService:WebService!
+    private var countryViewModel:CountryListViewModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updatUI()
@@ -29,6 +32,9 @@ class ViewController: UIViewController {
     
     /// Function to refresh tableview data with webservice
     @objc fileprivate func updatUI() {
+        self.webService = WebService()
+        self.countryViewModel = CountryListViewModel(webservice: webService)
+        self.countryViewModel.delegate = self
     }
     
     /// Function to reload and update tableview
@@ -82,17 +88,28 @@ extension ViewController:UITableViewDelegate {
 extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.countryViewModel.getList().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CardCellId, for: indexPath) as! CardCell
-        let product = CardVM(cardTitle: "Name", cardImage:  "", cardDescription:  "Description")
-        cell.card = product
+        let countryInfo = self.countryViewModel.getList()[indexPath.row]
+        let card = CardVM(cardTitle: countryInfo.header ?? "" , cardImage: countryInfo.imgUrl ?? "", cardDescription: countryInfo.desc ?? "")
+        cell.card = card
         
         return cell
     }
     
 }
 
+extension ViewController: CountryListViewModelProtocol {
+    
+    func refreshModelList() {
+        self.navigationItem.title = self.countryViewModel.getTitle()
+        refreshControl.endRefreshing()
+        updateTableViewHeight()
+    }
+    
+    
+}
