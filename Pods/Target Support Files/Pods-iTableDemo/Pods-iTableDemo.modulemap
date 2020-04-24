@@ -1,0 +1,6 @@
+framework module Pods_iTableDemo {
+  umbrella header "Pods-iTableDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
