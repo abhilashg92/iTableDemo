@@ -23,19 +23,22 @@ class CountryListViewModel:NSObject {
     init(webservice: WebService) {
         self.webservice = webservice
         super.init()
-        populateSources()
+        getCountryInfo()
     }
     
+    
+    /// Function to get Country info
     func getList() -> [CountryInfo]  {
         return self.countryViewModels.first?.rows ?? []
     }
     
+    /// Function to get Country title
     func getTitle() -> String {
         return self.countryViewModels.first?.title ?? ""
     }
     
-    
-    func populateSources() {
+    /// Function to get country info from swbservice
+    func getCountryInfo() {
         webservice.loadSources { (countryViewModel) in
             self.countryViewModels = [countryViewModel]
             self.delegate?.refreshModelList()

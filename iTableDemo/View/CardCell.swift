@@ -59,6 +59,7 @@ class CardCell : UITableViewCell {
     }()
     
     
+    /// Function to set up layout of all ui elements
     fileprivate func setupLayout() {
         cardImage.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
         cardImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

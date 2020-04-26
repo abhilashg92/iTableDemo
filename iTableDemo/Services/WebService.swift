@@ -15,6 +15,9 @@ class WebService {
     
     private let sourcesURL = URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")!
     
+    
+    /// Function to call get country webservice and map to CountryModel
+    /// - Parameter completion: Returning  CountryModel
     func loadSources(completion :@escaping (CountryModel) -> ()) {
         
         Alamofire.request(sourcesURL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseString { (response) in

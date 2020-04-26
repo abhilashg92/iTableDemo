@@ -12,7 +12,6 @@ import Foundation
 struct CountryModel {
     var title: String?
     var rows = [CountryInfo]()
-    // var imageUrl:String
     
     init?(dictionary :JSONDictionary) {
         
@@ -27,7 +26,6 @@ struct CountryModel {
             }
         }
         self.title = title
-        //        self.rows = list
     }
     
 }

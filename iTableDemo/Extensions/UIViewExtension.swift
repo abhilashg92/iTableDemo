@@ -12,6 +12,10 @@ let imagecache = NSCache<AnyObject, AnyObject>()
 
 extension UIImageView {
     
+    /// Function to download and cache image from ur
+    /// - Parameters:
+    ///   - urlString: url for downloading image
+    ///   - key: key for saving image chache
     func loadImageUsingCacheWithUrlString(urlString: String, key: String) {
         let activityView = UIActivityIndicatorView(style: .gray)
         activityView.center = self.center
