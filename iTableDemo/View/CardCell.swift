@@ -30,9 +30,10 @@ class CardCell : UITableViewCell {
     
     private let lblCardTitle : UILabel = {
         let lbl = UILabel()
+         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textColor = .black
         lbl.font = UIFont.boldSystemFont(ofSize: 16)
-        lbl.textAlignment = .left
+        lbl.textAlignment = .center
         return lbl
     }()
     
@@ -40,8 +41,9 @@ class CardCell : UITableViewCell {
     private let lblCardDescription : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
+        lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont.systemFont(ofSize: 16)
-        lbl.textAlignment = .left
+        lbl.textAlignment = .center
         lbl.numberOfLines = 0
         return lbl
     }()
@@ -50,22 +52,35 @@ class CardCell : UITableViewCell {
     private let cardImage : UIImageView = {
         
         let imgView = UIImageView(image: UIImage(named: "Image"))
-        
+        imgView.translatesAutoresizingMaskIntoConstraints = false
         imgView.contentMode = .scaleAspectFit
         imgView.clipsToBounds = true
         return imgView
     }()
     
     
+    fileprivate func setupLayout() {
+        cardImage.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        cardImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        cardImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        lblCardTitle.topAnchor.constraint(equalTo: cardImage.bottomAnchor, constant: 10).isActive = true
+        lblCardTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
+        lblCardTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 5).isActive = true
+        
+        lblCardDescription.topAnchor.constraint(equalTo: lblCardTitle.bottomAnchor, constant: 10).isActive = true
+        lblCardDescription.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
+        lblCardDescription.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 5).isActive = true
+        lblCardDescription.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(cardImage)
         addSubview(lblCardTitle)
         addSubview(lblCardDescription)
-        
-        cardImage.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: 0, height: 200, enableInsets: false)
-        lblCardTitle.anchor(top: cardImage.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: 50, height: 0, enableInsets: false)
-        lblCardDescription.anchor(top: lblCardTitle.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: 50, height: 0, enableInsets: false)
+                
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
