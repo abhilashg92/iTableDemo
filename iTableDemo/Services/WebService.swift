@@ -20,7 +20,7 @@ class WebService {
         Alamofire.request(sourcesURL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseString { (response) in
             if response.response?.statusCode == 200 {
 
-                let respData = response.result.value?.data(using: .utf8) // TODO use guard
+                let respData = response.result.value?.data(using: .utf8)
 
                 do {
                     if let jsonObj = try JSONSerialization.jsonObject(with: respData!, options : .allowFragments) as? [String:Any]

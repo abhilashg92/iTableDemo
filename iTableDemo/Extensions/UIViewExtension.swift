@@ -11,13 +11,11 @@ import UIKit
 extension UIView {
     
     func anchor (top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?, paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat, height: CGFloat, enableInsets: Bool) {
-        let topInset = CGFloat(0)
-        let bottomInset = CGFloat(0)
         
         translatesAutoresizingMaskIntoConstraints = false
         
         if let top = top {
-            self.topAnchor.constraint(equalTo: top, constant: paddingTop+topInset).isActive = true
+            self.topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
         }
         if let left = left {
             self.leftAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
@@ -26,7 +24,7 @@ extension UIView {
             rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
         }
         if let bottom = bottom {
-            bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom-bottomInset).isActive = true
+            bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
         }
         if height != 0 {
             heightAnchor.constraint(equalToConstant: height).isActive = true
@@ -45,53 +43,51 @@ let imagecache = NSCache<AnyObject, AnyObject>()
 extension UIImageView {
     
     func loadImageUsingCacheWithUrlString(urlString: String, key: String) {
-        //check cache for image first
+        let activityView = UIActivityIndicatorView(style: .gray)
+        activityView.center = self.center
+        self.addSubview(activityView)
+        
+        DispatchQueue.main.async {
+            activityView.startAnimating()
+        }
+        
+        
+        guard let url = URL(string: urlString as String) else {
+            DispatchQueue.main.async {
+                activityView.stopAnimating()
+                self.image = UIImage(named: "Image")
+            }
+            return
+        }
+        
         if let cachedImage = imagecache.object(forKey: key as AnyObject) as? UIImage {
             
             DispatchQueue.main.async {
                 self.image = nil
+                activityView.stopAnimating()
                 self.image = cachedImage
             }
             return
         }
         
-        //otherwise fire off a new download
-        let urlStr : NSString = urlString as NSString
-        let url = NSURL(string: urlString as String)
-        
-        //let request:NSURLRequest = NSURLRequest(url: url as! URL)
-        
-        guard let imgUrl = URL(string: urlStr as String) else {
-            return
-        }
-        let request = URLRequest(url: imgUrl, cachePolicy: NSURLRequest.CachePolicy.returnCacheDataElseLoad, timeoutInterval: 60)
-        
-        //Get cache response using request object
-        let cacheResponse = URLCache.shared.cachedResponse(for:request)
-        
-        if cacheResponse == nil {
-            
-            URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
-                
-                //download hit an error so lets return out
+        URLSession.shared.dataTask(with: url as URL, completionHandler: { (data, response, error) in
+            DispatchQueue.main.async {
                 if error != nil {
+                    
+                    self.image = UIImage(named: "Image")
+                    activityView.stopAnimating()
                     return
                 }
                 
-                DispatchQueue.main.async {
-                    
-                    let cacheResponse = CachedURLResponse(response: response!, data: data!)
-                    URLCache.shared.storeCachedResponse(cacheResponse, for: request)
-                    
-                    
-                    if let downloadedImage = UIImage(data: data!) {
-                        imagecache.setObject(downloadedImage, forKey: key as AnyObject)
-                        self.image = nil
-                        self.image = downloadedImage
-                    }
-                }
                 
-            }).resume()
-        }
+                self.image = nil
+                activityView.stopAnimating()
+                if let downloadedImage = UIImage(data: data!) {
+                    imagecache.setObject(downloadedImage, forKey: key as AnyObject)
+                    self.image = downloadedImage
+                }
+            }
+            
+        }).resume()
     }
 }

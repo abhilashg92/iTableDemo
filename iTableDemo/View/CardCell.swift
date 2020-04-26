@@ -19,6 +19,7 @@ class CardCell : UITableViewCell {
     
     var card : CardVM? {
         didSet {
+            cardImage.image = nil
             cardImage.loadImageUsingCacheWithUrlString(urlString: card?.cardImage ?? "", key: card?.cardTitle ?? "")
             lblCardTitle.text = card?.cardTitle
             lblCardDescription.text = card?.cardDescription

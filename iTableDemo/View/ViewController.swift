@@ -39,7 +39,6 @@ class ViewController: UIViewController {
     
     /// Function to reload and update tableview
     fileprivate func updateTableViewHeight() {
-        tableView.reloadData()
         var frame = tableView.frame
         frame.size.height = tableView.contentSize.height
         tableView.frame = frame
@@ -60,6 +59,7 @@ class ViewController: UIViewController {
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
         
+        tableView.allowsSelection = false
         tableView.contentInset.top = 20
         tableView.frame = CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight)
         let contentSize = self.tableView.contentSize
@@ -108,6 +108,7 @@ extension ViewController: CountryListViewModelProtocol {
     func refreshModelList() {
         self.navigationItem.title = self.countryViewModel.getTitle()
         refreshControl.endRefreshing()
+        tableView.reloadData()
         updateTableViewHeight()
     }
     
