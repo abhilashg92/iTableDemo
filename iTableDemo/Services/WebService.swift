@@ -9,16 +9,15 @@
 import Foundation
 import Alamofire
 
-typealias JSONDictionary = [String:Any]
+typealias JSONDictionary = [String: Any]
 
 class WebService {
     
     private let sourcesURL = URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")!
     
-    
     /// Function to call get country webservice and map to CountryModel
     /// - Parameter completion: Returning  CountryModel
-    func loadSources(completion :@escaping (CountryModel) -> ()) {
+    func loadSources(completion :@escaping (CountryModel) -> Void) {
         
         Alamofire.request(sourcesURL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseString { (response) in
             if response.response?.statusCode == 200 {
@@ -26,8 +25,7 @@ class WebService {
                 let respData = response.result.value?.data(using: .utf8)
 
                 do {
-                    if let jsonObj = try JSONSerialization.jsonObject(with: respData!, options : .allowFragments) as? [String:Any]
-                    {
+                    if let jsonObj = try JSONSerialization.jsonObject(with: respData!, options: .allowFragments) as? [String: Any] {
                        let list =  CountryModel.init(dictionary: jsonObj)
                         completion(list!)
                     } else {

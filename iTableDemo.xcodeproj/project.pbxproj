@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,13 +12,14 @@
 		1836B3422453008A00AED4D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836B3412453008A00AED4D6 /* ViewController.swift */; };
 		1836B3472453008B00AED4D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1836B3462453008B00AED4D6 /* Assets.xcassets */; };
 		1836B34A2453008B00AED4D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1836B3482453008B00AED4D6 /* LaunchScreen.storyboard */; };
-		1836B3552453008B00AED4D6 /* iTableDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836B3542453008B00AED4D6 /* iTableDemoTests.swift */; };
-		1836B3602453008B00AED4D6 /* iTableDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836B35F2453008B00AED4D6 /* iTableDemoUITests.swift */; };
+		1836B3552453008B00AED4D6 /* ITableDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836B3542453008B00AED4D6 /* ITableDemoTests.swift */; };
+		1836B3602453008B00AED4D6 /* ITableDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836B35F2453008B00AED4D6 /* ITableDemoUITests.swift */; };
 		1836B36F245307F500AED4D6 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836B36E245307F500AED4D6 /* CardCell.swift */; };
 		1836B37324530D2200AED4D6 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836B37224530D2200AED4D6 /* UIViewExtension.swift */; };
 		1836B3762453147800AED4D6 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836B3752453147800AED4D6 /* WebService.swift */; };
 		1836B379245314C500AED4D6 /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836B378245314C500AED4D6 /* CountryViewModel.swift */; };
 		1836B37C2453152E00AED4D6 /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836B37B2453152E00AED4D6 /* CountryModel.swift */; };
+		1887B058245B11130065182D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1887B057245B11130065182D /* .swiftlint.yml */; };
 		6DE6F64D496C1C8F33532C92 /* Pods_iTableDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E856B5A81554315A8089841 /* Pods_iTableDemo.framework */; };
 		B43AEF73D1372902FA4565E6 /* Pods_iTableDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2454139E6D72BBE1D50960C9 /* Pods_iTableDemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -49,16 +50,17 @@
 		1836B3492453008B00AED4D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1836B34B2453008B00AED4D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1836B3502453008B00AED4D6 /* iTableDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTableDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1836B3542453008B00AED4D6 /* iTableDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTableDemoTests.swift; sourceTree = "<group>"; };
+		1836B3542453008B00AED4D6 /* ITableDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITableDemoTests.swift; sourceTree = "<group>"; };
 		1836B3562453008B00AED4D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1836B35B2453008B00AED4D6 /* iTableDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTableDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1836B35F2453008B00AED4D6 /* iTableDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTableDemoUITests.swift; sourceTree = "<group>"; };
+		1836B35F2453008B00AED4D6 /* ITableDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITableDemoUITests.swift; sourceTree = "<group>"; };
 		1836B3612453008B00AED4D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1836B36E245307F500AED4D6 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		1836B37224530D2200AED4D6 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		1836B3752453147800AED4D6 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		1836B378245314C500AED4D6 /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
 		1836B37B2453152E00AED4D6 /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
+		1887B057245B11130065182D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2454139E6D72BBE1D50960C9 /* Pods_iTableDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTableDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		695A13D109367CED39FC4A5C /* Pods_iTableDemo_iTableDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTableDemo_iTableDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E856B5A81554315A8089841 /* Pods_iTableDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTableDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +102,7 @@
 		1836B3312453008A00AED4D6 = {
 			isa = PBXGroup;
 			children = (
+				1887B057245B11130065182D /* .swiftlint.yml */,
 				1836B33C2453008A00AED4D6 /* iTableDemo */,
 				1836B3532453008B00AED4D6 /* iTableDemoTests */,
 				1836B35E2453008B00AED4D6 /* iTableDemoUITests */,
@@ -138,7 +141,7 @@
 		1836B3532453008B00AED4D6 /* iTableDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				1836B3542453008B00AED4D6 /* iTableDemoTests.swift */,
+				1836B3542453008B00AED4D6 /* ITableDemoTests.swift */,
 				1836B3562453008B00AED4D6 /* Info.plist */,
 			);
 			path = iTableDemoTests;
@@ -147,7 +150,7 @@
 		1836B35E2453008B00AED4D6 /* iTableDemoUITests */ = {
 			isa = PBXGroup;
 			children = (
-				1836B35F2453008B00AED4D6 /* iTableDemoUITests.swift */,
+				1836B35F2453008B00AED4D6 /* ITableDemoUITests.swift */,
 				1836B3612453008B00AED4D6 /* Info.plist */,
 			);
 			path = iTableDemoUITests;
@@ -214,7 +217,6 @@
 				01E7EAED52F95028224D96D3 /* Pods-iTableDemoTests.debug.xcconfig */,
 				916072CAFF4275647F4D2EE6 /* Pods-iTableDemoTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -230,6 +232,7 @@
 				1836B3372453008A00AED4D6 /* Frameworks */,
 				1836B3382453008A00AED4D6 /* Resources */,
 				6FC009468A502D547BF20054 /* [CP] Embed Pods Frameworks */,
+				1887B056245B0F650065182D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -327,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1887B058245B11130065182D /* .swiftlint.yml in Resources */,
 				1836B34A2453008B00AED4D6 /* LaunchScreen.storyboard in Resources */,
 				1836B3472453008B00AED4D6 /* Assets.xcassets in Resources */,
 			);
@@ -349,6 +353,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1887B056245B0F650065182D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		6FC009468A502D547BF20054 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -470,7 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1836B3552453008B00AED4D6 /* iTableDemoTests.swift in Sources */,
+				1836B3552453008B00AED4D6 /* ITableDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1836B3602453008B00AED4D6 /* iTableDemoUITests.swift in Sources */,
+				1836B3602453008B00AED4D6 /* ITableDemoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

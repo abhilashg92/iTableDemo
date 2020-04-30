@@ -10,12 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let CardCellId = "CardCell"
-    var tableView:UITableView!
+    let cardCellID = "CardCell"
+    var tableView: UITableView!
     var refreshControl = UIRefreshControl()
     
-    private var webService:WebService!
-    private var countryViewModel:CountryListViewModel!
+    private var webService: WebService!
+    private var countryViewModel: CountryListViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,6 @@ class ViewController: UIViewController {
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
     
     /// Function to refresh tableview data with webservice
     @objc fileprivate func updatUI() {
@@ -53,7 +52,7 @@ class ViewController: UIViewController {
         
         tableView.backgroundView?.backgroundColor = .white
         
-        tableView.register(CardCell.self, forCellReuseIdentifier: CardCellId)
+        tableView.register(CardCell.self, forCellReuseIdentifier: cardCellID)
         
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         let displayWidth: CGFloat = self.view.frame.width
@@ -79,7 +78,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController:UITableViewDelegate {
+extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -93,9 +92,12 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: CardCellId, for: indexPath) as! CardCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cardCellID, for: indexPath) as? CardCell else {
+            return CardCell()
+        }
+        
         let countryInfo = self.countryViewModel.getList()[indexPath.row]
-        let card = CardVM(cardTitle: countryInfo.header ?? "" , cardImage: countryInfo.imgUrl ?? "", cardDescription: countryInfo.desc ?? "")
+        let card = CardVM(cardTitle: countryInfo.header ?? "", cardImage: countryInfo.imgUrl ?? "", cardDescription: countryInfo.desc ?? "")
         cell.card = card
         
         return cell
@@ -111,6 +113,5 @@ extension ViewController: CountryListViewModelProtocol {
         tableView.reloadData()
         updateTableViewHeight()
     }
-    
     
 }

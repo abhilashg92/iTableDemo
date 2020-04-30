@@ -8,16 +8,15 @@
 
 import UIKit
 
-
 struct CardVM {
-  var cardTitle : String
-  var cardImage : String
-  var cardDescription : String
+  var cardTitle: String
+  var cardImage: String
+  var cardDescription: String
 }
     
-class CardCell : UITableViewCell {
+class CardCell: UITableViewCell {
     
-    var card : CardVM? {
+    var card: CardVM? {
         didSet {
             cardImage.image = nil
             cardImage.loadImageUsingCacheWithUrlString(urlString: card?.cardImage ?? "", key: card?.cardTitle ?? "")
@@ -25,10 +24,8 @@ class CardCell : UITableViewCell {
             lblCardDescription.text = card?.cardDescription
         }
     }
-    
-    let imageCache = NSCache<NSString, UIImage>()
-    
-    private let lblCardTitle : UILabel = {
+        
+    private let lblCardTitle: UILabel = {
         let lbl = UILabel()
          lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textColor = .black
@@ -37,8 +34,7 @@ class CardCell : UITableViewCell {
         return lbl
     }()
     
-    
-    private let lblCardDescription : UILabel = {
+    private let lblCardDescription: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -48,8 +44,7 @@ class CardCell : UITableViewCell {
         return lbl
     }()
     
-    
-    private let cardImage : UIImageView = {
+    private let cardImage: UIImageView = {
         
         let imgView = UIImageView(image: UIImage(named: "Image"))
         imgView.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +52,6 @@ class CardCell : UITableViewCell {
         imgView.clipsToBounds = true
         return imgView
     }()
-    
     
     /// Function to set up layout of all ui elements
     fileprivate func setupLayout() {
@@ -89,4 +83,3 @@ class CardCell : UITableViewCell {
     }
     
 }
-

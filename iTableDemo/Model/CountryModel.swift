@@ -8,20 +8,18 @@
 
 import Foundation
 
-
 struct CountryModel {
     var title: String?
     var rows = [CountryInfo]()
     
-    init?(dictionary :JSONDictionary) {
+    init?(dictionary: JSONDictionary) {
         
         guard let title = dictionary["title"] as? String,
-            let list = dictionary["rows"] as? [[String:Any]] else {
+            let list = dictionary["rows"] as? [[String: Any]] else {
                 return nil
         }
-        
-        for i in list {
-            if let info = CountryInfo(dict: i) {
+        for card in list {
+            if let info = CountryInfo(dict: card) {
                 rows.append(info)
             }
         }
@@ -32,9 +30,8 @@ struct CountryModel {
 
 struct CountryInfo {
     var header: String?
-    var desc:String?
-    var imgUrl:String?
-    
+    var desc: String?
+    var imgUrl: String?
     init?(dict: JSONDictionary) {
         
         guard let header = dict["title"] as? String else {
@@ -44,8 +41,7 @@ struct CountryInfo {
         if  let desc = dict["description"] as? String {
             self.desc = desc
         }
-        
-        if let imageUrl = dict["imageHref"] as? String {
+         if let imageUrl = dict["imageHref"] as? String {
             self.imgUrl = imageUrl
         }
         self.header = header

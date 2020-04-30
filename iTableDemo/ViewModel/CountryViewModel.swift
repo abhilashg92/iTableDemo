@@ -8,17 +8,16 @@
 
 import Foundation
 
-protocol CountryListViewModelProtocol:class {
+protocol CountryListViewModelProtocol: class {
     func refreshModelList()
 }
 
-class CountryListViewModel:NSObject {
+class CountryListViewModel: NSObject {
     
-    private var countryViewModels:[CountryModel] = [CountryModel]()
+    private var countryViewModels: [CountryModel] = [CountryModel]()
     
-    private var token :NSKeyValueObservation?
-    private var webservice:WebService
-    weak var delegate:CountryListViewModelProtocol?
+    private var webservice: WebService
+    weak var delegate: CountryListViewModelProtocol?
     
     init(webservice: WebService) {
         self.webservice = webservice
@@ -26,9 +25,8 @@ class CountryListViewModel:NSObject {
         getCountryInfo()
     }
     
-    
     /// Function to get Country info
-    func getList() -> [CountryInfo]  {
+    func getList() -> [CountryInfo] {
         return self.countryViewModels.first?.rows ?? []
     }
     

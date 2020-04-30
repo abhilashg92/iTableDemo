@@ -25,7 +25,6 @@ extension UIImageView {
             activityView.startAnimating()
         }
         
-        
         guard let url = URL(string: urlString as String) else {
             DispatchQueue.main.async {
                 activityView.stopAnimating()
@@ -44,7 +43,7 @@ extension UIImageView {
             return
         }
         
-        URLSession.shared.dataTask(with: url as URL, completionHandler: { (data, response, error) in
+        URLSession.shared.dataTask(with: url as URL, completionHandler: { (data, _, error) in
             DispatchQueue.main.async {
                 if error != nil {
                     
@@ -52,7 +51,6 @@ extension UIImageView {
                     activityView.stopAnimating()
                     return
                 }
-                
                 
                 self.image = nil
                 activityView.stopAnimating()
