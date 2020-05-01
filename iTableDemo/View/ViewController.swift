@@ -19,7 +19,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.updatUI()
+        self.getCountryData()
         addTableVieToView()
     }
     
@@ -30,10 +30,15 @@ class ViewController: UIViewController {
     }
     
     /// Function to refresh tableview data with webservice
-    @objc fileprivate func updatUI() {
+    @objc fileprivate func refreshList() {
+        self.countryViewModel.getCountryInfo()
+    }
+    
+    fileprivate func getCountryData() {
         self.webService = WebService()
         self.countryViewModel = CountryListViewModel(webservice: webService)
         self.countryViewModel.delegate = self
+
     }
     
     /// Function to reload and update tableview
@@ -69,7 +74,7 @@ class ViewController: UIViewController {
         
         self.tableView.tableFooterView = footer
         refreshControl.attributedTitle = NSAttributedString(string: "Refreshing--")
-        refreshControl.addTarget(self, action: #selector(self.updatUI), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(self.refreshList), for: .valueChanged)
         tableView.addSubview(refreshControl) 
         
         self.tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -106,6 +111,10 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: CountryListViewModelProtocol {
+    
+    func refreshFailure() {
+        //
+    }
     
     func refreshModelList() {
         self.navigationItem.title = self.countryViewModel.getTitle()

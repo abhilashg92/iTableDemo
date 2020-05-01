@@ -11,7 +11,11 @@ import Alamofire
 
 typealias JSONDictionary = [String: Any]
 
-class WebService {
+protocol WebServiceProtocol {
+    func loadSources(completion :@escaping (CountryModel) -> Void)
+}
+
+class WebService: WebServiceProtocol {
     
     private let sourcesURL = URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")!
     

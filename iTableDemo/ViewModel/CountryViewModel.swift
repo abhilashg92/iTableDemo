@@ -10,16 +10,17 @@ import Foundation
 
 protocol CountryListViewModelProtocol: class {
     func refreshModelList()
+    func refreshFailure()
 }
 
 class CountryListViewModel: NSObject {
     
     private var countryViewModels: [CountryModel] = [CountryModel]()
     
-    private var webservice: WebService
+    private var webservice: WebServiceProtocol!
     weak var delegate: CountryListViewModelProtocol?
     
-    init(webservice: WebService) {
+    init(webservice: WebServiceProtocol) {
         self.webservice = webservice
         super.init()
         getCountryInfo()

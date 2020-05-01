@@ -23,21 +23,12 @@ class ITableDemoUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // UI tests must launch the application that they test.
+    func testViewController() {
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
-        }
+        
+        XCTAssertEqual(app.tableRows.count, 0)
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Flag"]/*[[".cells.staticTexts[\"Flag\"]",".staticTexts[\"Flag\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
+        XCTAssertEqual(app.tables.count, 1)
     }
 }
