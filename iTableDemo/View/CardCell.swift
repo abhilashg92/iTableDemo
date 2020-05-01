@@ -60,12 +60,12 @@ class CardCell: UITableViewCell {
         cardImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
         
         lblCardTitle.topAnchor.constraint(equalTo: cardImage.bottomAnchor, constant: 10).isActive = true
-        lblCardTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
-        lblCardTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 5).isActive = true
+        lblCardTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        lblCardTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10).isActive = true
         
         lblCardDescription.topAnchor.constraint(equalTo: lblCardTitle.bottomAnchor, constant: 10).isActive = true
-        lblCardDescription.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
-        lblCardDescription.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 5).isActive = true
+        lblCardDescription.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        lblCardDescription.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
         lblCardDescription.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
     }
     
