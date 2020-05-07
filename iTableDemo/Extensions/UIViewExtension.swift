@@ -11,7 +11,7 @@ import UIKit
 let imagecache = NSCache<AnyObject, AnyObject>()
 
 extension UIImageView {
-    
+
     /// Function to download and cache image from ur
     /// - Parameters:
     ///   - urlString: url for downloading image
@@ -20,11 +20,11 @@ extension UIImageView {
         let activityView = UIActivityIndicatorView(style: .gray)
         activityView.center = self.center
         self.addSubview(activityView)
-        
+
         DispatchQueue.main.async {
             activityView.startAnimating()
         }
-        
+
         guard let url = URL(string: urlString as String) else {
             DispatchQueue.main.async {
                 activityView.stopAnimating()
@@ -32,9 +32,9 @@ extension UIImageView {
             }
             return
         }
-        
+
         if let cachedImage = imagecache.object(forKey: key as AnyObject) as? UIImage {
-            
+
             DispatchQueue.main.async {
                 self.image = nil
                 activityView.stopAnimating()
@@ -42,16 +42,15 @@ extension UIImageView {
             }
             return
         }
-        
+
         URLSession.shared.dataTask(with: url as URL, completionHandler: { (data, _, error) in
             DispatchQueue.main.async {
                 if error != nil {
-                    
                     self.image = UIImage(named: "Image")
                     activityView.stopAnimating()
                     return
                 }
-                
+
                 self.image = nil
                 activityView.stopAnimating()
                 if let downloadedImage = UIImage(data: data!) {
@@ -59,7 +58,7 @@ extension UIImageView {
                     self.image = downloadedImage
                 }
             }
-            
+
         }).resume()
     }
 }

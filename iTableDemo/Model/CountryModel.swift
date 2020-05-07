@@ -11,9 +11,9 @@ import Foundation
 struct CountryModel {
     var title: String?
     var rows = [CountryInfo]()
-    
+
     init?(dictionary: JSONDictionary) {
-        
+
         guard let title = dictionary["title"] as? String,
             let list = dictionary["rows"] as? [[String: Any]] else {
                 return nil
@@ -25,7 +25,6 @@ struct CountryModel {
         }
         self.title = title
     }
-    
 }
 
 struct CountryInfo {
@@ -33,11 +32,11 @@ struct CountryInfo {
     var desc: String?
     var imgUrl: String?
     init?(dict: JSONDictionary) {
-        
+
         guard let header = dict["title"] as? String else {
             return nil
         }
-        
+
         if  let desc = dict["description"] as? String {
             self.desc = desc
         }
@@ -46,5 +45,4 @@ struct CountryInfo {
         }
         self.header = header
     }
-    
 }

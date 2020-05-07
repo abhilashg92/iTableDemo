@@ -26,7 +26,6 @@ class ITableDemoUITests: XCTestCase {
     func testViewController() {
         let app = XCUIApplication()
         app.launch()
-        
         XCTAssertEqual(app.tableRows.count, 0)
         app.tables/*@START_MENU_TOKEN@*/.staticTexts["Flag"]/*[[".cells.staticTexts[\"Flag\"]",".staticTexts[\"Flag\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
         XCTAssertEqual(app.tables.count, 1)
